@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>driver-factory-parent</artifactId>
+        <groupId>org.fxclub.qa</groupId>
+        <version>5.2.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>testng-examples</artifactId>
+    <packaging>jar</packaging>
+
+    <properties>
+        <project.jdk.version>1.8</project.jdk.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <TEST_SUITE />
+        <DRIVER_FACTORY />
+        <DRIVER_MODE />
+        <APPLICATION_PATH />
+        <PLATFORM_VERSION />
+        <TESTOBJECT_CLOUD />
+        <APPIUM_VERSION />
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>local-mac</id>
+            <activation>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+            <properties>
+                <TEST_SUITE>selenoid</TEST_SUITE>
+                <DRIVER_FACTORY>selenoid</DRIVER_FACTORY>
+                <DRIVER_MODE>local</DRIVER_MODE>
+            </properties>
+        </profile>
+        <profile>
+            <id>selenoid</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <TEST_SUITE>selenoid</TEST_SUITE>
+                <DRIVER_FACTORY>selenoid</DRIVER_FACTORY>
+                <DRIVER_MODE>grid</DRIVER_MODE>
+            </properties>
+        </profile>
+        <profile>
+            <id>appium-remote-ios</id>
+            <properties>
+                <TEST_SUITE>appium-remote</TEST_SUITE>
+                <DRIVER_FACTORY>appium</DRIVER_FACTORY>
+                <DRIVER_MODE>local</DRIVER_MODE>
+                <APPLICATION_PATH>
+                    https://github.com/letsrokk/example-files/raw/master/cordova-github.ipa
+                </APPLICATION_PATH>
+            </properties>
+        </profile>
+        <profile>
+            <id>appium-local-ios</id>
+            <properties>
+                <TEST_SUITE>appium-remote</TEST_SUITE>
+                <DRIVER_FACTORY>appium</DRIVER_FACTORY>
+                <DRIVER_MODE>local</DRIVER_MODE>
+                <APPLICATION_PATH>src/test/resources/cordova-github.ipa</APPLICATION_PATH>
+            </properties>
+        </profile>
+        <profile>
+            <id>testobject-android</id>
+            <properties>
+                <TEST_SUITE>testobject-apps</TEST_SUITE>
+                <DRIVER_FACTORY>testobject</DRIVER_FACTORY>
+                <APPLICATION_PATH>src/test/resources/cordova-github.apk</APPLICATION_PATH>
+                <PLATFORM_VERSION>10</PLATFORM_VERSION>
+                <TESTOBJECT_CLOUD>US</TESTOBJECT_CLOUD>
+            </properties>
+        </profile>
+        <profile>
+            <id>testobject-ios</id>
+            <properties>
+                <TEST_SUITE>testobject-apps</TEST_SUITE>
+                <DRIVER_FACTORY>testobject</DRIVER_FACTORY>
+                <APPLICATION_PATH>src/test/resources/cordova-github.ipa</APPLICATION_PATH>
+                <PLATFORM_VERSION>13</PLATFORM_VERSION>
+                <TESTOBJECT_CLOUD>US</TESTOBJECT_CLOUD>
+            </properties>
+        </profile>
+        <profile>
+            <id>testobject-integrations</id>
+            <properties>
+                <TEST_SUITE>testobject-integrations</TEST_SUITE>
+                <DRIVER_FACTORY>testobject</DRIVER_FACTORY>
+                <APPLICATION_PATH>src/test/resources/cordova-github.apk</APPLICATION_PATH>
+                <PLATFORM_VERSION>10</PLATFORM_VERSION>
+                <TESTOBJECT_CLOUD>US</TESTOBJECT_CLOUD>
+            </properties>
+        </profile>
+        <profile>
+            <id>grid-api</id>
+            <properties>
+                <TEST_SUITE>grid-api</TEST_SUITE>
+                <DRIVER_FACTORY>appium</DRIVER_FACTORY>
+                <DRIVER_MODE>grid</DRIVER_MODE>
+                <APPLICATION_PATH>src/test/resources/cordova-github.ipa</APPLICATION_PATH>
+                <PLATFORM_VERSION />
+            </properties>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.fxclub.qa</groupId>
+            <artifactId>driver-factory</artifactId>
+            <version>5.2.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>ru.yandex.qatools.htmlelements</groupId>
+            <artifactId>htmlelements-java</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.fxclub.qa</groupId>
+            <artifactId>driver-factory-listeners</artifactId>
+            <version>5.2.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.letsrokk</groupId>
+            <artifactId>testng-console-listener</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/${TEST_SUITE}.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <DRIVER_FACTORY>${DRIVER_FACTORY}</DRIVER_FACTORY>
+                        <DRIVER_MODE>${DRIVER_MODE}</DRIVER_MODE>
+                        <APPLICATION_PATH>${APPLICATION_PATH}</APPLICATION_PATH>
+                        <PLATFORM_VERSION>${PLATFORM_VERSION}</PLATFORM_VERSION>
+                        <TESTOBJECT_CLOUD>${TESTOBJECT_CLOUD}</TESTOBJECT_CLOUD>
+                        <APPIUM_VERSION>${APPIUM_VERSION}</APPIUM_VERSION>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

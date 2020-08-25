@@ -1,0 +1,85 @@
+variables:
+  MAVEN_OPTS: "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
+
+stages:
+  - build
+  - test
+  - deploy
+
+cache:
+  paths:
+    - /root/.m2/repository/
+
+build:
+  stage: build
+  script:
+    - ./mvnw $MAVEN_CLI_OPTS clean install -DskipTests
+  only:
+    - branches
+  tags:
+    - maven
+  image: openjdk:8-jdk-slim
+
+test-selenoid:
+  stage: test
+  script:
+    - ./mvnw $MAVEN_CLI_OPTS test -P selenoid -DREMOTE_ADDRESS=$GRID_URL -DBMP_HOST=$BMP_HOST -DBMP_PORT=$BMP_PORT
+  only:
+    - branches
+  tags:
+    - maven
+  image: openjdk:8-jdk-slim
+
+test-testobject-ios:
+  stage: test
+  script:
+    - ./mvnw $MAVEN_CLI_OPTS test -P testobject-ios
+  only:
+    - branches
+  tags:
+    - maven
+  image: openjdk:8-jdk-slim
+
+test-testobject-android:
+  stage: test
+  script:
+    - ./mvnw $MAVEN_CLI_OPTS test -P testobject-android
+  only:
+    - branches
+  tags:
+    - maven
+  image: openjdk:8-jdk-slim
+
+test-testobject-integrations:
+  stage: test
+  script:
+    - ./mvnw $MAVEN_CLI_OPTS test -P testobject-integrations
+  only:
+    - branches
+  tags:
+    - maven
+  image: openjdk:8-jdk-slim
+
+deploy-snapshot:
+  stage: deploy
+  script:
+    - echo $MAVEN_SETTINGS_NEXUS > .mvn/settings.xml
+    - ./mvnw $MAVEN_CLI_OPTS -s .mvn/settings.xml deploy -DskipTests -Dspotbugs.skip=true
+  only:
+    - develop
+  tags:
+    - maven
+  image: openjdk:8-jdk-slim
+
+deploy-release:
+  stage: deploy
+  script:
+    - echo $MAVEN_SETTINGS_NEXUS > .mvn/settings.xml
+    - ./mvnw versions:set -DnewVersion=$CI_COMMIT_REF_NAME
+    - ./mvnw $MAVEN_CLI_OPTS -s .mvn/settings.xml deploy -DskipTests -Dspotbugs.skip=true
+  only:
+    - tags
+  tags:
+    - maven
+  image: openjdk:8-jdk-slim

@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TestObject Tests" verbose="1">
+
+    <test name="Appium Local">
+        <classes>
+            <class name="org.fxclub.qa.tests.appium.AppiumTest"/>
+        </classes>
+    </test>
+
+</suite>

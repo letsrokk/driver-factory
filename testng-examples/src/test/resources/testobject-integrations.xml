@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TestObject Tests" verbose="1">
+
+    <test name="TestObject Listeners" parallel="methods">
+        <classes>
+            <class name="org.fxclub.qa.tests.testobject.TestObjectLiveSessionTest"/>
+        </classes>
+    </test>
+
+    <test name="TestObject API" parallel="methods">
+        <classes>
+            <class name="org.fxclub.qa.tests.testobject.TestObjectApiTest"/>
+        </classes>
+    </test>
+
+</suite>

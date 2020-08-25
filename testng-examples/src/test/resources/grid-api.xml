@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Selenium Tests" verbose="1">
+
+    <test name="Selenium Grid API" parallel="none">
+        <classes>
+            <class name="org.fxclub.qa.tests.grid_api.GridApiTest"/>
+        </classes>
+    </test>
+
+</suite>
