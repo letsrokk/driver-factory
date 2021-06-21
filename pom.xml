@@ -49,14 +49,6 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-        <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>bintray-letsrokk-github</id>
-            <name>bintray</name>
-            <url>https://dl.bintray.com/letsrokk/github</url>
-        </repository>
     </repositories>
 
     <dependencyManagement>
@@ -238,7 +230,7 @@
             <dependency>
                 <groupId>com.github.letsrokk</groupId>
                 <artifactId>testng-console-listener</artifactId>
-                <version>5.0.3</version>
+                <version>6.0.0-SNAPSHOT</version>
             </dependency>
 
         </dependencies>

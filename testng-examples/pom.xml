@@ -25,6 +25,19 @@
 
     <profiles>
         <profile>
+            <id>local-win</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <properties>
+                <TEST_SUITE>selenoid</TEST_SUITE>
+                <DRIVER_FACTORY>selenoid</DRIVER_FACTORY>
+                <DRIVER_MODE>local</DRIVER_MODE>
+            </properties>
+        </profile>
+        <profile>
             <id>local-mac</id>
             <activation>
                 <os>
