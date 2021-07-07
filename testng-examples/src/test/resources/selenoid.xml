@@ -4,9 +4,10 @@
     <test name="Selenoid Factory" parallel="methods">
         <classes>
             <class name="org.fxclub.qa.tests.web.ChromeDriver"/>
-            <class name="org.fxclub.qa.tests.web.BrowserMobDownloadsTest"/>
             <class name="org.fxclub.qa.tests.web.MarionetteDriver"/>
             <class name="org.fxclub.qa.tests.web.AllureListenersAndAttachments"/>
+            <!--Disabled BrowserMob Support Tests-->
+            <!--<class name="org.fxclub.qa.tests.web.BrowserMobDownloadsTest"/>-->
         </classes>
     </test>
 
