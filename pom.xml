@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.fxclub.qa</groupId>
+    <groupId>com.github.letsrokk</groupId>
     <artifactId>driver-factory-parent</artifactId>
     <version>5.2.0-SNAPSHOT</version>
     <modules>
@@ -16,9 +16,9 @@
     <description>Selenium WebDriver and Appium Driver factories</description>
 
     <scm>
-        <url>scm:git:git@git.fxclub.org:QA_Automation/selenium-factory.git</url>
-        <connection>scm:git:git@git.fxclub.org:QA_Automation/selenium-factory.git</connection>
-        <developerConnection>scm:git:git@git.fxclub.org:QA_Automation/selenium-factory.git</developerConnection>
+        <url>scm:git:git@github.com:letsrokk/driver-factory.git</url>
+        <connection>scm:git:git@github.com:letsrokk/driver-factory.git</connection>
+        <developerConnection>scm:git:git@github.com:letsrokk/driver-factory.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
@@ -258,7 +258,7 @@
                     <version>2.5.3</version>
                     <configuration>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
-                        <tagBase>https://git.fxclub.org/QA_Automation/selenium-factory/tags</tagBase>
+                        <tagBase>https://github.com/letsrokk/driver-factory/tags</tagBase>
                     </configuration>
                 </plugin>
             </plugins>

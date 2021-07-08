@@ -47,7 +47,7 @@ For Selenium-based factories implemented support for standalone BrowserMob Proxy
 
 Implemented BMP filters:
 - `FileDownloader` - for assistance with File downloading process 
-(usage example: [BrowserMobDownloadsTest.java](testng-examples/src/test/java/org/fxclub/qa/tests/web/BrowserMobDownloadsTest.java))
+(usage example: [BrowserMobDownloadsTest.java](testng-examples/src/test/java/com/github/letsrokk/tests/web/BrowserMobDownloadsTest.java))
 
 ### Logging
 
@@ -61,7 +61,7 @@ Configuration example: [log4j2.xml](testng-examples/src/test/resources/log4j2.xm
 ### Minimal Configuration Example
 
 ```java
-package org.fxclub.qa.examples;
+package com.github.letsrokk.examples;
 
 import DriverFactoryTestBase;
 import UnsupportedBrowserException;
@@ -86,7 +86,7 @@ public class SelenoidFactoryMinimalConfigurationTest extends DriverFactoryTestBa
 ### Minimal Configuration Example
 
 ```java
-package org.fxclub.qa.examples;
+package com.github.letsrokk.examples;
 
 import org.assertj.core.api.Assertions;
 import DriverFactoryTestBase;
@@ -163,7 +163,7 @@ Appium Node `--default-capabilities` example for iPhone
 ### Minimal Configuration Example
 
 ```java
-package org.fxclub.qa.examples;
+package com.github.letsrokk.examples;
 
 import org.assertj.core.api.Assertions;
 import DriverFactoryTestBase;
