@@ -3,7 +3,7 @@
 
     <test name="Hybrid Apps" parallel="methods">
         <classes>
-            <class name="org.fxclub.qa.tests.hybrid.HybridAppTest"/>
+            <class name="com.github.letsrokk.tests.hybrid.HybridAppTest"/>
         </classes>
     </test>
 

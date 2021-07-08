@@ -3,13 +3,13 @@
 
     <test name="TestObject Listeners" parallel="methods">
         <classes>
-            <class name="org.fxclub.qa.tests.testobject.TestObjectLiveSessionTest"/>
+            <class name="com.github.letsrokk.tests.testobject.TestObjectLiveSessionTest"/>
         </classes>
     </test>
 
     <test name="TestObject API" parallel="methods">
         <classes>
-            <class name="org.fxclub.qa.tests.testobject.TestObjectApiTest"/>
+            <class name="com.github.letsrokk.tests.testobject.TestObjectApiTest"/>
         </classes>
     </test>
 

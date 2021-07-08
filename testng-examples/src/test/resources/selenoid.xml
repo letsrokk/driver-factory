@@ -3,17 +3,17 @@
 
     <test name="Selenoid Factory" parallel="methods">
         <classes>
-            <class name="org.fxclub.qa.tests.web.ChromeDriver"/>
-            <class name="org.fxclub.qa.tests.web.MarionetteDriver"/>
-            <class name="org.fxclub.qa.tests.web.AllureListenersAndAttachments"/>
+            <class name="com.github.letsrokk.tests.web.ChromeDriver"/>
+            <class name="com.github.letsrokk.tests.web.MarionetteDriver"/>
+            <class name="com.github.letsrokk.tests.web.AllureListenersAndAttachments"/>
             <!--Disabled BrowserMob Support Tests-->
-            <!--<class name="org.fxclub.qa.tests.web.BrowserMobDownloadsTest"/>-->
+            <!--<class name="BrowserMobDownloadsTest"/>-->
         </classes>
     </test>
 
     <test name="Hybrid Apps" parallel="none">
         <classes>
-            <class name="org.fxclub.qa.tests.hybrid.HybridAppTest"/>
+            <class name="com.github.letsrokk.tests.hybrid.HybridAppTest"/>
         </classes>
     </test>
 

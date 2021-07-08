@@ -3,7 +3,7 @@
 
     <test name="Appium Local">
         <classes>
-            <class name="org.fxclub.qa.tests.appium.AppiumTest"/>
+            <class name="com.github.letsrokk.tests.appium.AppiumTest"/>
         </classes>
     </test>
 

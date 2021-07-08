@@ -63,9 +63,9 @@ Configuration example: [log4j2.xml](testng-examples/src/test/resources/log4j2.xm
 ```java
 package org.fxclub.qa.examples;
 
-import org.fxclub.qa.factories.DriverFactoryTestBase;
-import org.fxclub.qa.factories.selenium.exceptions.UnsupportedBrowserException;
-import org.fxclub.qa.factories.selenoid.SelenoidFactory;
+import DriverFactoryTestBase;
+import UnsupportedBrowserException;
+import SelenoidFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -89,8 +89,8 @@ public class SelenoidFactoryMinimalConfigurationTest extends DriverFactoryTestBa
 package org.fxclub.qa.examples;
 
 import org.assertj.core.api.Assertions;
-import org.fxclub.qa.factories.DriverFactoryTestBase;
-import org.fxclub.qa.factories.appium.AppiumFactory;
+import DriverFactoryTestBase;
+import AppiumFactory;
 import org.openqa.selenium.remote.SessionId;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -166,8 +166,8 @@ Appium Node `--default-capabilities` example for iPhone
 package org.fxclub.qa.examples;
 
 import org.assertj.core.api.Assertions;
-import org.fxclub.qa.factories.DriverFactoryTestBase;
-import org.fxclub.qa.factories.testobject.TestObjectFactory;
+import DriverFactoryTestBase;
+import TestObjectFactory;
 import org.openqa.selenium.remote.SessionId;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
