@@ -10,16 +10,18 @@ import org.fxclub.qa.factories.selenium.exceptions.UnsupportedBrowserException;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
+import org.openqa.selenium.support.ui.SlowLoadableComponent;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
+import java.time.Clock;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Default Web Page template
  */
-public abstract class DefaultWebPage<K extends DefaultWebPage<K, V>, V extends DriverFactory>
-        extends LoadableComponent<K> {
+public abstract class DefaultSlowWebPage<K extends DefaultSlowWebPage<K, V>, V extends DriverFactory>
+        extends SlowLoadableComponent<K> {
 
     protected final V factory;
     protected final RemoteWebDriver driver;
@@ -28,10 +30,11 @@ public abstract class DefaultWebPage<K extends DefaultWebPage<K, V>, V extends D
 
     protected final WebDriverTimeouts timeouts = new WebDriverTimeouts();
 
-    protected final Logger logger = LogManager.getLogger(DefaultWebPage.class);
+    protected final Logger logger = LogManager.getLogger(DefaultSlowWebPage.class);
 
     @Inject
-    public DefaultWebPage(V factory) throws UnsupportedBrowserException, IOException, InterruptedException {
+    public DefaultSlowWebPage(V factory, Clock clock, int timeoutInSeconds) throws UnsupportedBrowserException, IOException, InterruptedException {
+        super(clock, timeoutInSeconds);
         this.factory = factory;
         this.driver = factory.getDriver();
         this.extendedDriver = factory.getExtendedDriver();

@@ -10,7 +10,6 @@ import org.apache.tika.Tika;
 import org.apache.tika.mime.MimeTypeException;
 import org.apache.tika.mime.MimeTypes;
 import org.fxclub.qa.factories.ExtendedDriver;
-import org.fxclub.qa.factories.selenium.elements.WTFSelect;
 import org.fxclub.qa.factories.selenoid.SelenoidFactory;
 import org.fxclub.qa.grid.GridApiUtils;
 import org.fxclub.qa.grid.model.WDSessionInfo;
@@ -24,8 +23,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.remote.SessionId;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.yandex.qatools.htmlelements.element.CheckBox;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -424,8 +423,8 @@ public class WTFWebDriver implements ExtendedDriver {
      * @param values Options to select
      * @return Select element
      */
-    public WTFSelect selectByValue(WTFSelect select, String... values) {
-        Arrays.asList(values).stream().forEach(value -> select.selectByValue(value));
+    public Select selectByValue(Select select, String... values) {
+        Arrays.asList(values).stream().forEach(select::selectByValue);
         return select;
     }
 
@@ -450,30 +449,6 @@ public class WTFWebDriver implements ExtendedDriver {
         WebDriverWait wait = new WebDriverWait(originalDriver, timeouts.getTimeout(WebDriverTimeouts.WAIT_URL_CONTAINS, TimeUnit.SECONDS));
         wait.until(ExpectedConditions.urlContains(url));
         return originalDriver.getCurrentUrl();
-    }
-
-    /**
-     * Find Checkbox element (HTML Elements)
-     *
-     * @param locator BY locator
-     * @return CheckBox element
-     */
-    public CheckBox findCheckbox(By locator) {
-        return new CheckBox(
-                originalDriver.findElement(locator)
-        );
-    }
-
-    /**
-     * Find Select element (HTML Elements)
-     *
-     * @param locator BY locator
-     * @return Select element
-     */
-    public WTFSelect findSelect(By locator) {
-        return new WTFSelect(
-                originalDriver.findElement(locator)
-        );
     }
 
     /**
