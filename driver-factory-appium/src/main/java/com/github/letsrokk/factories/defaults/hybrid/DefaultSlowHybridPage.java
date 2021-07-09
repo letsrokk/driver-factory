@@ -2,7 +2,7 @@ package com.github.letsrokk.factories.defaults.hybrid;
 
 import com.github.letsrokk.factories.DriverFactory;
 import com.github.letsrokk.factories.appium.AbstractAppiumFactory;
-import com.github.letsrokk.factories.appium.WTFAppiumDriver;
+import com.github.letsrokk.factories.selenium.WTFWebDriver;
 import com.github.letsrokk.factories.selenium.WebDriverTimeouts;
 import com.github.letsrokk.factories.selenium.exceptions.UnsupportedBrowserException;
 import com.google.inject.Inject;
@@ -23,7 +23,7 @@ public abstract class DefaultSlowHybridPage<K extends DefaultSlowHybridPage<K, V
 
     protected V factory;
     protected RemoteWebDriver driver;
-    protected WTFAppiumDriver extendedDriver;
+    protected WTFWebDriver extendedDriver;
     protected WebDriverWait wait;
 
     protected WebDriverTimeouts timeouts = new WebDriverTimeouts();
@@ -33,7 +33,7 @@ public abstract class DefaultSlowHybridPage<K extends DefaultSlowHybridPage<K, V
         super(clock, timeoutInSeconds);
         this.factory = factory;
         this.driver = factory.getDriver();
-        this.extendedDriver = (WTFAppiumDriver) factory.getExtendedDriver();
+        this.extendedDriver = factory.getExtendedDriver();
         this.wait = new WebDriverWait(driver, this.timeouts.getTimeout(WebDriverTimeouts.IMPLICITLY_WAIT, TimeUnit.SECONDS));
 
         if (factory instanceof AbstractAppiumFactory) {

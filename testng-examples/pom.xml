@@ -132,6 +132,13 @@
         </dependency>
 
         <dependency>
+            <groupId>com.github.letsrokk</groupId>
+            <artifactId>driver-factory-appium</artifactId>
+            <version>5.2.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <scope>test</scope>
