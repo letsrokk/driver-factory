@@ -23,7 +23,7 @@
     </scm>
 
     <properties>
-        <project.jdk.version>1.8</project.jdk.version>
+        <project.jdk.version>11</project.jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <nexus.repository>172.20.45.210</nexus.repository>
