@@ -3,7 +3,7 @@ package com.github.letsrokk.testng;
 import com.github.letsrokk.factories.DriverFactory;
 import com.github.letsrokk.factories.selenium.MODE;
 import com.github.letsrokk.factories.selenoid.SelenoidFactory;
-import com.github.letsrokk.guice.module.DriverFactoryModule;
+import com.github.letsrokk.guice.module.SelenoidFactoryModule;
 import com.google.inject.Guice;
 import com.google.inject.Provider;
 import io.qameta.allure.Attachment;
@@ -13,7 +13,7 @@ import org.testng.ITestResult;
 
 public class AllureAttachSelenoidVideos implements ITestListener {
 
-    private Provider<DriverFactory> factory = Guice.createInjector(new DriverFactoryModule()).getProvider(DriverFactory.class);
+    private Provider<DriverFactory> factory = Guice.createInjector(new SelenoidFactoryModule()).getProvider(DriverFactory.class);
 
     @Override
     public void onTestStart(ITestResult iTestResult) {

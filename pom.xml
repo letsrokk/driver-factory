@@ -6,9 +6,10 @@
     <artifactId>driver-factory-parent</artifactId>
     <version>5.2.0-SNAPSHOT</version>
     <modules>
-        <module>driver-factory</module>
-        <module>testng-examples</module>
+        <module>driver-factory-selenium</module>
+        <module>driver-factory-appium</module>
         <module>driver-factory-listeners</module>
+        <module>testng-examples</module>
     </modules>
     <packaging>pom</packaging>
 

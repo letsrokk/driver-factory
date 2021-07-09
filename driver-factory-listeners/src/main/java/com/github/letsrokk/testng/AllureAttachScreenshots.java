@@ -3,7 +3,7 @@ package com.github.letsrokk.testng;
 import com.github.letsrokk.factories.DriverFactory;
 import com.github.letsrokk.factories.selenium.WTFWebDriver;
 import com.github.letsrokk.factories.selenium.exceptions.UnsupportedBrowserException;
-import com.github.letsrokk.guice.module.DriverFactoryModule;
+import com.github.letsrokk.guice.module.SelenoidFactoryModule;
 import com.google.inject.Guice;
 import com.google.inject.Provider;
 import io.qameta.allure.Allure;
@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class AllureAttachScreenshots implements ITestListener {
 
-    private Provider<DriverFactory> factory = Guice.createInjector(new DriverFactoryModule()).getProvider(DriverFactory.class);
+    private Provider<DriverFactory> factory = Guice.createInjector(new SelenoidFactoryModule()).getProvider(DriverFactory.class);
 
     @Override
     public void onTestStart(ITestResult iTestResult) {

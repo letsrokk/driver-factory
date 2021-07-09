@@ -126,7 +126,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.letsrokk</groupId>
-            <artifactId>driver-factory</artifactId>
+            <artifactId>driver-factory-selenium</artifactId>
             <version>5.2.0-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
