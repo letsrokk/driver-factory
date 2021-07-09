@@ -4,6 +4,7 @@ import com.github.letsrokk.factories.ExtendedDriver;
 import com.github.letsrokk.grid.model.WDSessionInfo;
 import com.google.common.io.Files;
 import com.google.common.primitives.Ints;
+import io.appium.java_client.AppiumDriver;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -739,6 +740,40 @@ public class WTFWebDriver implements ExtendedDriver {
     public void anchor(String anchor) {
         String hash = "#" + StringUtils.trimToEmpty(anchor);
         executeScript("location.hash='" + hash + "'");
+    }
+
+    /**
+     * Switch context to WebView (Appium / Mobile only)
+     *
+     * @throws java.util.NoSuchElementException      WebView not available
+     * @throws UnsupportedCommandException Not Implemented
+     */
+    @SuppressWarnings("unchecked")
+    public void switchToWebViewContext() throws java.util.NoSuchElementException, UnsupportedCommandException {
+        if (originalDriver instanceof AppiumDriver) {
+            Set<String> contexts = ((AppiumDriver) originalDriver).getContextHandles();
+            String webviewContext = contexts
+                    .stream()
+                    .filter(c -> c.startsWith("WEBVIEW"))
+                    .findFirst()
+                    .orElseThrow(() -> new java.util.NoSuchElementException("WEBVIEW is not avilable"));
+            ((AppiumDriver) originalDriver).context(webviewContext);
+        } else {
+            throw new UnsupportedCommandException("Switching context to WEBVIEW available only in Appium");
+        }
+    }
+
+    /**
+     * Switch context to Native App (Appium / Mobile only)
+     *
+     * @throws UnsupportedCommandException Not Implemented
+     */
+    public void switchToNativeContext() throws java.util.NoSuchElementException, UnsupportedCommandException {
+        if (originalDriver instanceof AppiumDriver) {
+            ((AppiumDriver) originalDriver).context("NATIVE_APP");
+        } else {
+            throw new UnsupportedCommandException("Switching context to WEBVIEW available only in Appium");
+        }
     }
 
 }

@@ -4,6 +4,7 @@ import com.github.letsrokk.DriverFactoryEnvs;
 import com.github.letsrokk.browsermob.BrowserMobUtils;
 import com.github.letsrokk.factories.DriverFactory;
 import com.github.letsrokk.factories.selenium.MODE;
+import com.github.letsrokk.factories.selenium.WTFWebDriver;
 import com.github.letsrokk.factories.selenium.exceptions.UnsupportedBrowserException;
 import com.github.letsrokk.factories.utils.EnvironmentUtils;
 import com.google.common.collect.ImmutableMap;
@@ -28,7 +29,7 @@ public abstract class AbstractAppiumFactory implements DriverFactory {
 
     protected static ThreadLocal<AppiumDriver> driver = new InheritableThreadLocal<>();
 
-    protected static ThreadLocal<WTFAppiumDriver> extendedDriver = new InheritableThreadLocal<>();
+    protected static ThreadLocal<WTFWebDriver> extendedDriver = new InheritableThreadLocal<>();
 
     protected static ThreadLocal<MODE> DRIVER_MODE = InheritableThreadLocal.withInitial(
             () -> {

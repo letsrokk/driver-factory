@@ -1,5 +1,6 @@
 package com.github.letsrokk.factories.appium;
 
+import com.github.letsrokk.factories.selenium.WTFWebDriver;
 import com.github.letsrokk.grid.GridApiUtils;
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.Singleton;
@@ -69,10 +70,10 @@ public class AppiumFactory extends AbstractAppiumFactory {
     }
 
     @Override
-    public WTFAppiumDriver getExtendedDriver() throws IOException, InterruptedException {
-        WTFAppiumDriver driver = extendedDriver.get();
+    public WTFWebDriver getExtendedDriver() throws IOException, InterruptedException {
+        WTFWebDriver driver = extendedDriver.get();
         if (driver == null) {
-            driver = new WTFAppiumDriver(getDriver());
+            driver = new WTFWebDriver(getDriver());
             extendedDriver.set(driver);
         }
         return driver;

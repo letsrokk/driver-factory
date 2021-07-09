@@ -6,6 +6,7 @@ import com.github.letsrokk.factories.DriverFactory;
 import com.github.letsrokk.factories.selenium.*;
 import com.github.letsrokk.factories.selenium.exceptions.UnsupportedBrowserException;
 import com.github.letsrokk.factories.utils.EnvironmentUtils;
+import io.appium.java_client.android.AndroidDriver;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -657,7 +658,11 @@ public class SelenoidFactory implements DriverFactory {
             case grid:
             case remote:
                 URL remoteAddress = remoteURL.get();
-                driver = new RemoteWebDriver(remoteAddress, capabilities);
+                if (browser.get() == BROWSER.android) {
+                    driver = new AndroidDriver(remoteAddress, capabilities);
+                } else {
+                    driver = new RemoteWebDriver(remoteAddress, capabilities);
+                }
                 // Support for file uploads
                 driver.setFileDetector(new LocalFileDetector());
                 break;
