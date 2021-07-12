@@ -417,6 +417,17 @@ public class WTFWebDriver implements ExtendedDriver {
     }
 
     /**
+     * Wait for Element to become clickable
+     *
+     * @param locator By locator
+     * @return WebElement Element
+     */
+    public WebElement waitElementClickable(By locator) {
+        WebDriverWait wait = new WebDriverWait(originalDriver, timeouts.getTimeout(WebDriverTimeouts.ELEMENT_CLICKABLE, TimeUnit.SECONDS));
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    /**
      * Select value for SELECT type element by value
      *
      * @param select Select element
