@@ -129,6 +129,12 @@
             <artifactId>driver-factory-selenium</artifactId>
             <version>5.2.0-SNAPSHOT</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>net.lightbody.bmp</groupId>
+                    <artifactId>browsermob-rest</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>

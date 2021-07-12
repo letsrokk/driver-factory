@@ -29,6 +29,18 @@
             <artifactId>selenium-java</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/net.lightbody.bmp/browsermob-rest -->
         <dependency>
             <groupId>net.lightbody.bmp</groupId>
