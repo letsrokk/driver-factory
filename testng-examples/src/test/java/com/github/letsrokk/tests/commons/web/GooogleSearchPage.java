@@ -28,18 +28,20 @@ public class GooogleSearchPage extends DefaultWebPage<GooogleSearchPage, Selenoi
     }
 
     public GooogleSearchPage noSuchElementException() {
-        driver.findElement(By.id("NoSuchElementExceptionId"));
+        getDriver().findElement(By.id("NoSuchElementExceptionId"));
         return this;
     }
 
     @Override
     public void load() {
-        driver.get("http://google.me");
-        wait.until(ExpectedConditions.visibilityOf(search_input));
+        getDriver().get("http://google.me");
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(search_input));
     }
 
     @Override
     public void isLoaded() {
-        Assertions.assertThat(extendedDriver.isElementDisplayed(search_input)).as("Search Input Field is displayed").isTrue();
+        Assertions.assertThat(getExtendedDriver().isElementDisplayed(search_input))
+                .as("Search Input Field is displayed")
+                .isTrue();
     }
 }
