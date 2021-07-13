@@ -7,13 +7,13 @@ import com.google.inject.Inject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.github.letsrokk.factories.selenium.exceptions.UnsupportedBrowserException;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.SlowLoadableComponent;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 import java.time.Clock;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -23,9 +23,6 @@ public abstract class DefaultSlowWebPage<K extends DefaultSlowWebPage<K, V>, V e
         extends SlowLoadableComponent<K> {
 
     protected final V factory;
-    protected final RemoteWebDriver driver;
-    protected final WTFWebDriver extendedDriver;
-    protected final WebDriverWait wait;
 
     protected final WebDriverTimeouts timeouts = new WebDriverTimeouts();
 
@@ -35,11 +32,19 @@ public abstract class DefaultSlowWebPage<K extends DefaultSlowWebPage<K, V>, V e
     public DefaultSlowWebPage(V factory, Clock clock, int timeoutInSeconds) throws UnsupportedBrowserException, IOException, InterruptedException {
         super(clock, timeoutInSeconds);
         this.factory = factory;
-        this.driver = factory.getDriver();
-        this.extendedDriver = factory.getExtendedDriver();
-        this.wait = new WebDriverWait(driver, this.timeouts.getTimeout(WebDriverTimeouts.IMPLICITLY_WAIT, TimeUnit.SECONDS));
+    }
 
-        PageFactory.initElements(driver, this);
+    protected WebDriver getDriver() throws UnsupportedBrowserException, IOException, InterruptedException {
+        return this.factory.getDriver();
+    }
+
+    protected WTFWebDriver getExtendedDriver() throws UnsupportedBrowserException, IOException, InterruptedException {
+        return this.factory.getExtendedDriver();
+    }
+
+    protected WebDriverWait getWebDriverWait() throws UnsupportedBrowserException, IOException, InterruptedException {
+        long timeoutInSeconds = this.timeouts.getTimeout(WebDriverTimeouts.IMPLICITLY_WAIT, TimeUnit.SECONDS);
+        return new WebDriverWait(getDriver(), Duration.ofSeconds(timeoutInSeconds));
     }
 
 }
